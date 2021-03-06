@@ -25,12 +25,9 @@ We have implemented this approach in a simple to use pipeline. For this approach
 - [HMMER 3.1b2+](http://hmmer.org/)
 
 ## Installation
-Downloading MMH:
+Downloading MMH, then adding MMH to the $PATH variable (for the current session):
 ```Bash
 git clone --recursive https://github.com/PombertLab/MMH.git
-```
-Adding MMH to the $PATH variable for teh current session:
-```Bash
 cd MMH/
 export PATH=$PATH:$(pwd)
 ```
