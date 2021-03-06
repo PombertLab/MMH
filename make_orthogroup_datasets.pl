@@ -10,7 +10,7 @@ my $usage = <<"OPTIONS";
 NAME		${name}
 VERSION		${version}
 UPDATED		${updated}
-SYNOPSIS	Create Fasta datasets from OrthoFinder Orthgroups output files.
+SYNOPSIS	Create Fasta datasets from OrthoFinder Orthogroups output files.
 		This script will split single- and multi-copy orthologs in distinct subfolders
 
 USAGE		${name} -f FASTA/ -t *.tsv -o ./Datasets
@@ -67,7 +67,7 @@ while (my $csv = shift@csv){
 	
 	my $mc = 0; my $sc = 0;
 	while (my $line = <CSV>){
-		chomp $line; # Chomping breaks the last tab with split(); -> chomping later instead
+		chomp $line;
 		if ($line =~ /^Orthogroup/){
 			print ORT "$line\n";
 			print PAR "$line\n";
