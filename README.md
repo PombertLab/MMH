@@ -25,11 +25,11 @@ We have implemented this approach in a simple to use pipeline. For this approach
 - [HMMER 3.1b2+](http://hmmer.org/)
 
 ## Installation
-#### Downloading MMH
+Downloading MMH:
 ```Bash
 git clone --recursive https://github.com/PombertLab/MMH.git
 ```
-#### Add MMH to the $PATH variable
+Adding MMH to the $PATH variable for teh current session:
 ```Bash
 cd MMH/
 export PATH=$PATH:$(pwd)
@@ -38,7 +38,7 @@ export PATH=$PATH:$(pwd)
 ## Example
 We can create an environment variable for ease of use, let's call it MMH:
 ```Bash
-cd MMH/    ## Replace operand by install location
+cd MMH/    ## Replace MMH/ by its installation location
 export MMH=$(pwd)
 ```
 
