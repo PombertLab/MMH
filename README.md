@@ -66,7 +66,7 @@ Options for [make_orthogroup_datasets.pl](https://github.com/PombertLab/MMH/blob
 ```
 -f (--fasta)   Folder containing multifasta files (proteins or nucleotides)
 -t (--tsv)     Orthogroups.tsv file(s) from OrthoFinder
--o (--outdir)	Output directory
+-o (--outdir)  Output directory
 ```
 
 To align single-copy ortholog datasets with [MAFFT](https://mafft.cbrc.jp/alignment/software/), type:
