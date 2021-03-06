@@ -2,10 +2,10 @@
 A simple pipeline to create and search HMM models against reference protein databases.
 
 ## Table of contents
-* [Introduction](#introduction)
-* [Dependencies](#dependencies)
-* [Installation](#installation)
-* [Usage example](#Usage-example)
+* [Introduction](#Introduction)
+* [Dependencies](#Dependencies)
+* [Installation](#Installation)
+* [Example](#Example)
 * [Scripts](#Scripts)
 * [Funding and acknowledgments](#Funding-and-acknowledgments)
 * [References](#References)
@@ -35,14 +35,17 @@ cd MMH/
 export PATH=$PATH:$(pwd)
 ```
 
-## Usage example
-####  Creating a $MMH environment variable for ease of use
+## Example
+We can create an environment variable for ease of use, let's call it MMH:
 ```Bash
 cd MMH/    ## Replace operand by install location
 export MMH=$(pwd)
 ```
 
-#### Running OrthoFinder, then copy the Orthogroups.tsv file to the current folder
+#### Creating orthologous datasets
+Before we can create HMM models, we must first identify homologs in the datasets, then align them. We can do that with [OrthoFinder](https://github.com/davidemms/OrthoFinder) and [MAFFT](https://mafft.cbrc.jp/alignment/software/).
+
+To run orthofinder on the data located in the Example/ folder:
 ```Bash
 cd $MMH/Example/
 
@@ -54,14 +57,15 @@ orthofinder \
 
 find $MMH/Example/OrthoFinder -name "Orthogroups.tsv" | xargs cp -t $MMH/Example/
 ```
-
-#### Generate Orthogroup datasets (sequences will be named file_name@accession_number), then align them with MAFFT
+To create datasets with standardized names (file_name@accession_number):
 ```Bash
 make_orthogroup_datasets.pl \
    -f $MMH/Example/FASTA/ \
    -t $MMH/Example/Orthogroups.tsv \
    -o $MMH/Example/Datasets
-   
+```
+##### Generate Orthogroup datasets (sequences will be named file_name@accession_number), then align them with MAFFT - [HMMER 3.1b2+](http://hmmer.org/)
+```Bash
 run_mafft.pl \
    -f $MMH/Example/Datasets/SINGLE_COPY_OG/*.fasta \
    -t 10
