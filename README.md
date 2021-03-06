@@ -33,7 +33,7 @@ export PATH=$PATH:$(pwd)
 ```
 
 ## Example
-We can create an environment variable for ease of use, let's call it MMH:
+For ease of use, we can create an environment variable, let's call it MMH:
 ```Bash
 cd MMH/    ## Replace MMH/ by its installation location
 export MMH=$(pwd)
