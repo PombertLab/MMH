@@ -44,8 +44,6 @@ Before we can create HMM models, we must first identify homologs in the datasets
 
 To run orthofinder on the data located in the Example/ folder:
 ```Bash
-cd $EX/
-
 orthofinder \
    -t 10 \
    -f $EX/FASTA/ \
