@@ -108,14 +108,10 @@ SOG00005	sp|P06839|RAD3_YEAST	1.1e-234	General transcription and DNA repair fact
 ## Scripts
 get_UniProt.pl - Downloads the SwissProt and/or trEMBL databases from UniProt automatically.
 make_orthogroup_datasets.pl - Creates Fasta datasets from OrthoFinder Orthogroups.tsv output file(s).
-###### run_mafft.pl
-Aligns multifasta files with MAFFT.
-###### run_hmmbuild.pl
-Generates a hidden Markov model for each alignment provided in Multifasta format.
-###### run_hmmsearch.pl
-Searches HMM profiles against proteins from known databases (e.g. SwissProt or trEMBL) in fasta format.
-###### parse_hmmtbl.pl
-Parses the output of hmm searches into a concise, tab-delimited format.
+run_mafft.pl - Aligns multifasta files with MAFFT.
+run_hmmbuild.pl - Generates a hidden Markov model for each alignment provided in Multifasta format.
+run_hmmsearch.pl - Searches HMM profiles against proteins from known databases (e.g. SwissProt or trEMBL) in fasta format.
+parse_hmmtbl.pl - Parses the output of hmm searches into a concise, tab-delimited format.
 
 ## Funding and acknowledgments
 This work was supported by the National Institute of Allergy and Infectious Diseases of the National Institutes of Health (award number R15AI128627) to Jean-Francois Pombert. The content is solely the responsibility of the authors and does not necessarily represent the official views of the National Institutes of Health.
