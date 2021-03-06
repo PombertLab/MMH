@@ -43,7 +43,7 @@ export MMH=$(pwd)
 ```
 
 #### Running OrthoFinder, then copy the Orthogroups.tsv file to the current folder
-```
+```Bash
 cd $MMH/Example/
 
 orthofinder \
@@ -56,7 +56,7 @@ find $MMH/Example/OrthoFinder -name "Orthogroups.tsv" | xargs cp -t $MMH/Example
 ```
 
 #### Generate Orthogroup datasets (sequences will be named file_name@accession_number), then align them with MAFFT
-```
+```Bash
 make_orthogroup_datasets.pl \
    -f $MMH/Example/FASTA/ \
    -t $MMH/Example/Orthogroups.tsv \
@@ -68,12 +68,12 @@ run_mafft.pl \
 ```
 
 #### Downloading the Swiss-Prot database
-```
+```Bash
 get_UniProt.pl -s -f $MMH/Example/UniProt
 ```
 
 #### Generating hidden Markov models with HMMER, searching models against the downloaded Swiss-Prot database, and parsing the results into a simple tab-delimited table for spreadsheet editors (e.g. Microsoft Excel, gnumeric...)
-```
+```Bash
 run_hmmbuild.pl -a $MMH/Example/Datasets/SINGLE_COPY_OG/*.aln
 
 run_hmmsearch.pl \
@@ -109,7 +109,6 @@ This work was supported by the National Institute of Allergy and Infectious Dise
 Buchfink B, Xie C, Huson DH. **Fast and sensitive protein alignment using DIAMOND.** *Nat Methods.* 2015 Jan;12(1):59-60. doi: [10.1038/nmeth.3176](https://doi.org/10.1038/nmeth.3176). Epub 2014 Nov 17. PMID: 25402007.
 
 Emms DM, Kelly S. **OrthoFinder: phylogenetic orthology inference for comparative genomics.** *Genome Biol.* 2019 Nov 14;20(1):238. doi: [10.1186/s13059-019-1832-y](https://doi.org/10.1186/s13059-019-1832-y). PMID: 31727128
-
  
 Katoh K, Standley DM. **MAFFT multiple sequence alignment software version 7: improvements in performance and usability.** *Mol Biol Evol.* 2013 Apr;30(4):772-80. doi: [10.1093/molbev/mst010](https://doi.org/10.1093/molbev/mst010). PMID: 23329690
 
