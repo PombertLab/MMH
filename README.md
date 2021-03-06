@@ -13,9 +13,9 @@ A simple pipeline to create and search HMM models against reference protein data
 ## Introduction
 Sequenced-based homology searches are usually performed with tools that search for similarity between proteins of interest and databases of sequences (*e.g.* [BLAST](https://blast.ncbi.nlm.nih.gov/Blast.cgi)) or with tools that search for known motifs (*e.g.* [Pfam](http://pfam.xfam.org/)). However, if a biological sequence is highly divergent, sequenced-based tools may fail to find homology with known sequences or motifs. This lack of detectable homology renders functional assignment based on sequence similarity difficult, which can be problematic for groups of organisms with highly divergent sequences.
 
-Homology searches against database motifs are inherently tied to the motifs themselves, and depending on how these motifs were generated, they may not accurately reflect the full spectrum of sequence diversity for the corresponding group of proteins. Therefore, by inverting the directionalty of the search, *i.e.* by creating motifs from sets of divergent sequences and then searching these motifs against known proteins, we might be able to improve the sensitivity of these searches and/or detect new signals. This approach is similar to the reciprocity-scheme that is commonly used by the research community for BLAST searches, and should return similar hits when performed on proteins with known motifs.
+Homology searches against database motifs are inherently tied to the motifs themselves, and depending on how these motifs were generated, they may not accurately reflect the full spectrum of sequence diversity for the corresponding group of proteins. Therefore, by inverting the directionality of the search, *i.e.* by creating motifs from sets of divergent sequences and then searching these motifs against known proteins, we might be able to improve the sensitivity of these searches and/or detect new signals. This approach is similar to the reciprocity-scheme that is commonly used by the research community for BLAST searches, and should return similar hits when performed on proteins with known motifs.
 
-We have implemented this approach in a simple to use pipeline. For this approach to work, at least a few datasets of proteins from (closely) related organims should be available. The MMH pipeline leverages [OrthoFinder](https://github.com/davidemms/OrthoFinder), [MAFTT](https://mafft.cbrc.jp/alignment/software/) and [HMMER](http://hmmer.org/) to identify single copy orthologs, align them, and generate hidden Markov models from the alignments. Those HMM models can then be searched against reference databases such as [UniProt](https://www.uniprot.org/)’s Swiss-Prot and trEMBL.
+We have implemented this approach in a simple to use pipeline. For this approach to work, at least a few datasets of proteins from (closely) related organisms should be available. The MMH pipeline leverages [OrthoFinder](https://github.com/davidemms/OrthoFinder), [MAFTT](https://mafft.cbrc.jp/alignment/software/) and [HMMER](http://hmmer.org/) to identify single copy orthologs, align them, and generate hidden Markov models from the alignments. Those HMM models can then be searched against reference databases such as [UniProt](https://www.uniprot.org/)’s Swiss-Prot and trEMBL.
 
 ## Dependencies
 - [Perl 5](https://www.perl.org/)
@@ -65,7 +65,7 @@ Two outputs folders will be generated inside the Datasets directory: SINGLE_COPY
 Options for [make_orthogroup_datasets.pl](https://github.com/PombertLab/MMH/blob/master/make_orthogroup_datasets.pl) are:
 ```
 -f (--fasta)   Folder containing multifasta files (proteins or nucleotides)
--t (--tsv)  Orthogroups.tsv file(s) from Orthofinder
+-t (--tsv)     Orthogroups.tsv file(s) from OrthoFinder
 -o (--outdir)	Output directory
 ```
 
