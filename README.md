@@ -33,7 +33,7 @@ export PATH=$PATH:$(pwd)
 ```
 
 ## Example
-For ease of use, we can create an environment variable pointing the Example/ folder, let's call it EX (for example):
+For ease of use, we can create an environment variable pointing to the Example/ folder, let's call it EX (for example):
 ```Bash
 cd Example/    ## Replace Example/ by its location
 export EX=$(pwd)
