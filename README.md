@@ -89,6 +89,22 @@ parse_hmmtbl.pl \
    -out $EX/hmmtable.tsv
 ```
 
+Output shoudl look like this:
+```Bash
+head -n 10 $EX/hmmtable.tsv
+Query	Target	E-value	Product	Genus	Species	OS descriptor
+SOG00004	sp|P23968|VATO_YEAST	6.9e-19	V-type proton ATPase subunit c''	Saccharomyces	Saccharomyces cerevisiae	Saccharomyces cerevisiae (strain ATCC 204508 / S288c) 
+SOG00004	sp|Q9SLA2|VATO2_ARATH	5.2e-18	V-type proton ATPase subunit c''2	Arabidopsis	Arabidopsis thaliana	Arabidopsis thaliana 
+SOG00004	sp|Q9SZY7|VATO1_ARATH	6e-18	V-type proton ATPase subunit c''1	Arabidopsis	Arabidopsis thaliana	Arabidopsis thaliana 
+SOG00004	sp|O14046|VATO_SCHPO	1.7e-16	Probable V-type proton ATPase 20 kDa proteolipid subunit	Schizosaccharomyces	Schizosaccharomyces pombe	Schizosaccharomyces pombe (strain 972 / ATCC 24843) 
+SOG00004	sp|Q91V37|VATO_MOUSE	1.7e-15	V-type proton ATPase 21 kDa proteolipid subunit	Mus	Mus musculus	Mus musculus 
+SOG00004	sp|Q99437|VATO_HUMAN	2.3e-15	V-type proton ATPase 21 kDa proteolipid subunit	Homo	Homo sapiens	Homo sapiens 
+SOG00004	sp|Q2TA24|VATO_BOVIN	4.8e-15	V-type proton ATPase 21 kDa proteolipid subunit	Bos	Bos taurus	Bos taurus 
+SOG00005	sp|P26659|RAD15_SCHPO	5.8e-238	General transcription and DNA repair factor IIH helicase subunit XPD	Schizosaccharomyces	Schizosaccharomyces pombe	Schizosaccharomyces pombe (strain 972 / ATCC 24843) 
+SOG00005	sp|P06839|RAD3_YEAST	1.1e-234	General transcription and DNA repair factor IIH helicase subunit XPD	Saccharomyces	Saccharomyces cerevisiae	Saccharomyces cerevisiae (strain ATCC 204508 / S288c) 
+
+```
+
 ## Scripts
 ###### get_UniProt.pl
 Downloads the SwissProt and/or trEMBL databases from UniProt automatically.
