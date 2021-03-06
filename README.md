@@ -37,8 +37,9 @@ export PATH=$PATH:$(pwd)
 
 ## Usage example
 ####  Creating a $MMH environment variable for ease of use
-```
-export MMH=/path/to/installation_directory/ ## Replace operand by install location
+```Bash
+cd MMH/    ## Replace operand by install location
+export MMH=$(pwd)
 ```
 
 #### Running OrthoFinder with 10 threads and Diamond for homology searches, then copy the Orthogroups.tsv file to the current folder
