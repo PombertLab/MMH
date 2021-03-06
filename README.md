@@ -64,7 +64,7 @@ Two outputs folders will be generated inside the Datasets directory: SINGLE_COPY
 
 Options for [make_orthogroup_datasets.pl](https://github.com/PombertLab/MMH/blob/master/make_orthogroup_datasets.pl) are:
 ```
--f (--fasta)   Folder containing multifasta files (proteins or nucleotides)
+-f (--fasta)   Folder containing multifasta files
 -t (--tsv)     Orthogroups.tsv file(s) from OrthoFinder
 -o (--outdir)  Output directory
 ```

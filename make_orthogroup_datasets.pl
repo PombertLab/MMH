@@ -16,8 +16,8 @@ SYNOPSIS	Create Fasta datasets from OrthoFinder Orthgroups output files.
 USAGE		${name} -f FASTA/ -t *.tsv -o ./Datasets
 
 OPTIONS:
--f (--fasta)	Folder containing multifasta files (proteins or nucleotides)
--t (--tsv)	Orthogroups.tsv file(s) from Orthofinder
+-f (--fasta)	Folder containing multifasta files
+-t (--tsv		Orthogroups.tsv file(s) from OrthoFinder
 -o (--outdir)	Output directory
 OPTIONS
 die "\n$usage\n" unless @ARGV;
