@@ -25,10 +25,15 @@ We have implemented this approach in a simple to use pipeline. For this approach
 - [HMMER 3.1b2+](http://hmmer.org/)
 
 ## Installation
-1) git clone --recursive https://github.com/PombertLab/XXXX ## Add final folder later
-2) add folder to the $PATH variable, e.g.
-nano ~/.bash_profile
-PATH=$PATH:/path/to/XXX ## Add final folder later
+#### Downloading MMH
+```Bash
+git clone --recursive https://github.com/PombertLab/MMH.git
+```
+#### Add MMH to the $PATH variable
+```Bash
+cd MMH/
+export PATH=$PATH:$(pwd)
+```
 
 ## Usage example
 ####  Creating a $MMH environment variable for ease of use
