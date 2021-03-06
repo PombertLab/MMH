@@ -25,7 +25,7 @@ We have implemented this approach in a simple to use pipeline. For this approach
 - [HMMER 3.1b2+](http://hmmer.org/)
 
 ## Installation
-Downloading MMH, then adding MMH to the $PATH variable (for the current session):
+Downloading MMH from the command line with Git, then adding MMH to the $PATH variable (for the current session):
 ```Bash
 git clone --recursive https://github.com/PombertLab/MMH.git
 cd MMH/
@@ -33,7 +33,7 @@ export PATH=$PATH:$(pwd)
 ```
 
 ## Example
-For ease of use, we can create an environment variable, let's call it EX:
+For ease of use, we can create an environment variable pointing the Example/ folder, let's call it EX (for example):
 ```Bash
 cd Example/    ## Replace Example/ by its location
 export EX=$(pwd)
@@ -110,7 +110,7 @@ SOG00005	sp|P06839|RAD3_YEAST	1.1e-234	General transcription and DNA repair fact
 2. [make_orthogroup_datasets.pl](https://github.com/PombertLab/MMH/blob/master/make_orthogroup_datasets.pl) - Creates Fasta datasets from OrthoFinder Orthogroups.tsv output file(s).
 3. [run_mafft.pl](https://github.com/PombertLab/MMH/blob/master/run_mafft.pl) - Aligns multifasta files with MAFFT.
 4. [run_hmmbuild.pl](https://github.com/PombertLab/MMH/blob/master/run_hmmbuild.pl) - Generates a hidden Markov model for each alignment provided in Multifasta format.
-5. [run_hmmsearch.pl](https://github.com/PombertLab/MMH/blob/master/run_hmmsearch.pl) - Searches HMM profiles against proteins from known databases (e.g. SwissProt or trEMBL) in fasta format.
+5. [run_hmmsearch.pl](https://github.com/PombertLab/MMH/blob/master/run_hmmsearch.pl) - Searches HMM profiles against proteins from known databases (*e.g.* SwissProt or trEMBL) in fasta format.
 6. [parse_hmmtbl.pl](https://github.com/PombertLab/MMH/blob/master/parse_hmmtbl.pl) - Parses the output of hmm searches into a concise, tab-delimited format.
 
 ## Funding and acknowledgments
