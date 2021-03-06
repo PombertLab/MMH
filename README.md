@@ -42,7 +42,7 @@ export EX=$(pwd)
 #### Creating orthologous datasets
 Before we can create HMM models, we must first identify homologs in the datasets, then align them. We can do that with [OrthoFinder](https://github.com/davidemms/OrthoFinder) and [MAFFT](https://mafft.cbrc.jp/alignment/software/).
 
-[OrthoFinder](https://github.com/davidemms/OrthoFinder)command line options are described on its [GitHub page](https://github.com/davidemms/OrthoFinder#further-options). To run OrthoFinder on the data located in the Example/ folder (using 10 threads; -t 10), type:
+[OrthoFinder](https://github.com/davidemms/OrthoFinder) command line options are described on its [GitHub page](https://github.com/davidemms/OrthoFinder#further-options). To run OrthoFinder on the data located in the Example/ folder (using 10 threads; -t 10), type:
 ```Bash
 orthofinder \
    -t 10 \
