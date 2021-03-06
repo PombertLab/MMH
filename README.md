@@ -60,7 +60,7 @@ make_orthogroup_datasets.pl \
    -t $EX/Orthogroups.tsv \
    -o $EX/Datasets
 ```
-Two outputs folders will be generated inside the Datasets directory: SINGLE_COPY_OG and MULTI_COPY_OG. Datasets featuring only single copy orthologs will be located in SINGLE_COPY_OG. Those featuring more than one ortholog per species, if any, will be located in MULTI_COPY_OG.
+Two outputs folders will be generated inside the Datasets/ directory: SINGLE_COPY_OG and MULTI_COPY_OG. Datasets featuring only single copy orthologs will be located in SINGLE_COPY_OG. Those featuring more than one ortholog per species, if any, will be located in MULTI_COPY_OG.
 
 Options for [make_orthogroup_datasets.pl](https://github.com/PombertLab/MMH/blob/master/make_orthogroup_datasets.pl) are:
 ```
@@ -91,7 +91,7 @@ Options for [run_mafft.pl](https://github.com/PombertLab/MMH/blob/master/run_maf
 ```
 
 #### Downloading the Swiss-Prot database
-The Swiss-Prot database will be queried against later with the HMM models generated in the next step. To download the Swiss-Prot database, typpe:
+The Swiss-Prot database will be queried against with the HMM models generated in the next step. To download the Swiss-Prot database, type:
 ```Bash
 get_UniProt.pl -s -f $EX/UniProt
 ```
