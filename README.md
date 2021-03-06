@@ -33,10 +33,10 @@ export PATH=$PATH:$(pwd)
 ```
 
 ## Example
-For ease of use, we can create an environment variable, let's call it MMH:
+For ease of use, we can create an environment variable, let's call it EX:
 ```Bash
-cd MMH/    ## Replace MMH/ by its installation location
-export MMH=$(pwd)
+cd Example/    ## Replace Example/ by its location
+export EX=$(pwd)
 ```
 
 #### Creating orthologous datasets
@@ -44,49 +44,49 @@ Before we can create HMM models, we must first identify homologs in the datasets
 
 To run orthofinder on the data located in the Example/ folder:
 ```Bash
-cd $MMH/Example/
+cd $EX/
 
 orthofinder \
    -t 10 \
-   -f $MMH/Example/FASTA/ \
+   -f $EX/FASTA/ \
    -S diamond \
-   -o $MMH/Example/OrthoFinder
+   -o $EX/OrthoFinder
 
-find $MMH/Example/OrthoFinder -name "Orthogroups.tsv" | xargs cp -t $MMH/Example/
+find $EX/OrthoFinder -name "Orthogroups.tsv" | xargs cp -t $EX/
 ```
 To create datasets with standardized names (file_name@accession_number):
 ```Bash
 make_orthogroup_datasets.pl \
-   -f $MMH/Example/FASTA/ \
-   -t $MMH/Example/Orthogroups.tsv \
-   -o $MMH/Example/Datasets
+   -f $EX/FASTA/ \
+   -t $EX/Orthogroups.tsv \
+   -o $EX/Datasets
 ```
 ##### Generate Orthogroup datasets (sequences will be named file_name@accession_number), then align them with MAFFT - [HMMER 3.1b2+](http://hmmer.org/)
 ```Bash
 run_mafft.pl \
-   -f $MMH/Example/Datasets/SINGLE_COPY_OG/*.fasta \
+   -f $EX/Datasets/SINGLE_COPY_OG/*.fasta \
    -t 10
 ```
 
 #### Downloading the Swiss-Prot database
 ```Bash
-get_UniProt.pl -s -f $MMH/Example/UniProt
+get_UniProt.pl -s -f $EX/UniProt
 ```
 
 #### Generating hidden Markov models with HMMER, searching models against the downloaded Swiss-Prot database, and parsing the results into a simple tab-delimited table for spreadsheet editors (e.g. Microsoft Excel, gnumeric...)
 ```Bash
-run_hmmbuild.pl -a $MMH/Example/Datasets/SINGLE_COPY_OG/*.aln
+run_hmmbuild.pl -a $EX/Datasets/SINGLE_COPY_OG/*.aln
 
 run_hmmsearch.pl \
-   -h $MMH/Example/Datasets/SINGLE_COPY_OG/*.hmm \
-   -f $MMH/Example/UniProt/uniprot_sprot.fasta.gz \
+   -h $EX/Datasets/SINGLE_COPY_OG/*.hmm \
+   -f $EX/UniProt/uniprot_sprot.fasta.gz \
    -t 10 \
    -e 1e-10 \
    -log
 
 parse_hmmtbl.pl \
-   -tbl $MMH/Example/Datasets/SINGLE_COPY_OG/*.hmm.*.tbl \
-   -out $MMH/Example/hmmtable.tsv
+   -tbl $EX/Datasets/SINGLE_COPY_OG/*.hmm.*.tbl \
+   -out $EX/hmmtable.tsv
 ```
 
 ## Scripts
