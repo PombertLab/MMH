@@ -1,4 +1,4 @@
-<p align="left"><img src="https://github.com/PombertLab/MMH/blob/master/logo.png" alt="MMH - A simple pipeline to create and search HMM models against reference protein databases." width="600"></p>
+<p align="left"><img src="https://github.com/PombertLab/MMH/blob/master/logo.png" alt="MMH - A simple pipeline to create and search HMM models against reference protein databases." width="800"></p>
 
 ## Table of contents
 * [Introduction](#Introduction)
