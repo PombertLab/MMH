@@ -107,7 +107,7 @@ Options for [get_UniProt.pl](https://github.com/PombertLab/MMH/blob/master/get_U
 ```
 
 #### Generating hidden Markov models
-Hidden Markov models will be generated and queried against [UniProt](https://www.uniprot.org/)’s Swiss-Prot database with [HMMER](http://hmmer.org/). To generate the models, query then against Swiss-Prot, then parse the output, type:
+Hidden Markov models will be generated and queried against [UniProt](https://www.uniprot.org/)’s Swiss-Prot database with [HMMER](http://hmmer.org/). To generate the models, query against Swiss-Prot, then parse the output, type:
 
 ```Bash
 run_hmmbuild.pl -a $EX/Datasets/SINGLE_COPY_OG/*.aln
