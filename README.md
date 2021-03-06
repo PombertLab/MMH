@@ -25,7 +25,7 @@ We have implemented this approach in a simple to use pipeline. For this approach
 - [HMMER 3.1b2+](http://hmmer.org/)
 
 ## Installation
-Downloading MMH from the command line with Git, then adding MMH to the $PATH variable (for the current session):
+To download MMH from the command line with Git, then add MMH to the $PATH variable (for the current session), type:
 ```Bash
 git clone --recursive https://github.com/PombertLab/MMH.git
 cd MMH/
