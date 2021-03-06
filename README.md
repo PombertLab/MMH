@@ -89,7 +89,7 @@ parse_hmmtbl.pl \
    -out $EX/hmmtable.tsv
 ```
 
-Output shoudl look like this:
+Output should look like this:
 ```Bash
 head -n 10 $EX/hmmtable.tsv
 Query	Target	E-value	Product	Genus	Species	OS descriptor
@@ -106,10 +106,8 @@ SOG00005	sp|P06839|RAD3_YEAST	1.1e-234	General transcription and DNA repair fact
 ```
 
 ## Scripts
-###### get_UniProt.pl
-Downloads the SwissProt and/or trEMBL databases from UniProt automatically.
-###### make_orthogroup_datasets.pl
-Creates Fasta datasets from OrthoFinder Orthogroups.tsv output file(s).
+get_UniProt.pl - Downloads the SwissProt and/or trEMBL databases from UniProt automatically.
+make_orthogroup_datasets.pl - Creates Fasta datasets from OrthoFinder Orthogroups.tsv output file(s).
 ###### run_mafft.pl
 Aligns multifasta files with MAFFT.
 ###### run_hmmbuild.pl
