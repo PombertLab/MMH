@@ -42,7 +42,7 @@ cd MMH/    ## Replace operand by install location
 export MMH=$(pwd)
 ```
 
-#### Running OrthoFinder with 10 threads and Diamond for homology searches, then copy the Orthogroups.tsv file to the current folder
+#### Running OrthoFinder, then copy the Orthogroups.tsv file to the current folder
 ```
 cd $MMH/Example/
 
