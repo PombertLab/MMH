@@ -35,14 +35,14 @@ export PATH=$PATH:$(pwd)
 ## Example
 For ease of use, we can create an environment variable pointing to the Example/ folder, let's call it EX (for example):
 ```Bash
-cd Example/    ## Replace Example/ by its location
+cd Example/         ## Replace Example/ by its location
 export EX=$(pwd)
 ```
 
 #### Creating orthologous datasets
 Before we can create HMM models, we must first identify homologs in the datasets, then align them. We can do that with [OrthoFinder](https://github.com/davidemms/OrthoFinder) and [MAFFT](https://mafft.cbrc.jp/alignment/software/).
 
-To run orthofinder on the data located in the Example/ folder:
+To run [OrthoFinder](https://github.com/davidemms/OrthoFinder) on the data located in the Example/ folder, type:
 ```Bash
 orthofinder \
    -t 10 \
@@ -52,26 +52,33 @@ orthofinder \
 
 find $EX/OrthoFinder -name "Orthogroups.tsv" | xargs cp -t $EX/
 ```
-To create datasets with standardized names (file_name@accession_number):
+To create datasets with standardized names (file_name@accession_number), type:
 ```Bash
 make_orthogroup_datasets.pl \
    -f $EX/FASTA/ \
    -t $EX/Orthogroups.tsv \
    -o $EX/Datasets
 ```
-##### Generate Orthogroup datasets (sequences will be named file_name@accession_number), then align them with MAFFT - [HMMER 3.1b2+](http://hmmer.org/)
+Two outputs folders will be generated inside the Datasets directory: SINGLE_COPY_OG and MULTI_COPY_OG. Datasets featuring only single copy orthologs will be located in SINGLE_COPY_OG. Those featuring more than one ortholog per species, if any, will be located in MULTI_COPY_OG.
+
+To align single-copy ortholog datasets with [MAFFT](https://mafft.cbrc.jp/alignment/software/), type:
 ```Bash
 run_mafft.pl \
    -f $EX/Datasets/SINGLE_COPY_OG/*.fasta \
    -t 10
 ```
 
+Alignments thus generated (with the file extension .aln) will be located in the same folder as the FASTA files.
+
 #### Downloading the Swiss-Prot database
+The Swiss-Prot database will be queried against later with the HMM models generated in the next step. To download the Swiss-Prot database, typpe:
 ```Bash
 get_UniProt.pl -s -f $EX/UniProt
 ```
 
-#### Generating hidden Markov models with HMMER, searching models against the downloaded Swiss-Prot database, and parsing the results into a simple tab-delimited table for spreadsheet editors (e.g. Microsoft Excel, gnumeric...)
+#### Generating hidden Markov models
+Hidden Markov models will be generated and queried against [UniProt](https://www.uniprot.org/)’s Swiss-Prot database with [HMMER](http://hmmer.org/). To generate the models, query then against Swiss-Prot, then parse the output, type:
+
 ```Bash
 run_hmmbuild.pl -a $EX/Datasets/SINGLE_COPY_OG/*.aln
 
@@ -87,7 +94,7 @@ parse_hmmtbl.pl \
    -out $EX/hmmtable.tsv
 ```
 
-Output should look like this:
+The results will be parsed into a simple tab-delimited table for spreadsheet editors (*e.g.* Microsoft Excel, gnumeric). The .tsv table should look like this:
 ```Bash
 head -n 10 $EX/hmmtable.tsv
 Query	Target	E-value	Product	Genus	Species	OS descriptor
