@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 ## Pombert Lab, 2018
 my $name = 'run_mafft.pl';
-my $version = 0.1;
+my $version = '0.1a';
 my $updated = '03/03/2021';
 
 use strict; use warnings; use Getopt::Long qw(GetOptions);
