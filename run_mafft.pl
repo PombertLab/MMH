@@ -52,7 +52,15 @@ my $qt = ''; if ($quiet){$qt = '--quiet';}
 while (my $fasta = shift@fasta) {
 	my $out = $fasta; $out =~ s/(.fasta|.fa|.fsa|.faa|.fna)$//;
 	print "Aligning $fasta...\n";
-	system "mafft --op $op --ep $ep --maxiterate $max $qt $rr $aln --thread $thread $fasta > $out.aln";
+	system "mafft \\
+	  --op $op \\
+	  --ep $ep \\
+	  --maxiterate $max \\
+	  $qt \\
+	  $rr \\
+	  $aln \\
+	  --thread $thread \\
+	  $fasta > $out.aln";
 }
 
 exit;

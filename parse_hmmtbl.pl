@@ -1,8 +1,8 @@
 #!/usr/bin/perl
 ## Pombert Lab, 2018
 my $name = 'parse_hmmtbl.pl';
-my $version = '0.2';
-my $updated = '04/03/2021';
+my $version = '0.2a';
+my $updated = '12/03/2021';
 
 use strict; use warnings; use Getopt::Long qw (GetOptions);
 
@@ -29,12 +29,12 @@ GetOptions(
 );
 
 ## Print table header
-open OUT, ">", "$table";
+open OUT, ">", "$table" or die "Can't create file $table: $!\n";
 print OUT "Query\tTarget\tE-value\tProduct\tGenus\tSpecies\tOS descriptor\n";
 
 ## Parsing files
 while (my $file = shift@tbl){
-	open IN, "<", "$file";
+	open IN, "<", "$file" or die "Can't read file $file: $!\n";
 		while (my $line = <IN>){
 		chomp $line;
 		if ($line =~ /^#/){ next;} ## Skipping comments 

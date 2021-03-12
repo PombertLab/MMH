@@ -1,8 +1,8 @@
 #!/usr/bin/perl
 ## Pombert Lab, 2018
 my $name = 'make_orthogroup_datasets.pl';
-my $version = 0.3;
-my $updated = '04/03/2021';
+my $version = '0.3a';
+my $updated = '12/03/2021';
 
 use strict; use warnings; use Getopt::Long qw(GetOptions); use File::Basename;
 
@@ -50,9 +50,9 @@ while (my $fasta = readdir DIR){
 }
 
 ## Creating output directories
-mkdir ("${odir}",0755);
-mkdir ("${odir}/SINGLE_COPY_OG",0755);
-mkdir ("${odir}/MULTI_COPY_OG",0755);
+mkdir (${odir},0755) or die "Cannot create folder $odir: $!\n";
+mkdir ("${odir}/SINGLE_COPY_OG",0755) or die "Cannot create folder ${odir}/SINGLE_COPY_OG: $!\n";
+mkdir ("${odir}/MULTI_COPY_OG",0755) or die "Cannot create folder ${odir}/MULTI_COPY_OG: $!\n";
 
 ## Creating multifasta files for each orthogroup
 my @OG; my @species;

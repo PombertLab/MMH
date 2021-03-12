@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 ## Pombert Lab, 2019
 my $name = 'run_hmmsearch.pl';
-my $version = 0.2;
+my $version = '0.2a';
 my $updated = '03/03/2021';
 
 use strict; use warnings; use Getopt::Long qw(GetOptions);
@@ -40,7 +40,7 @@ GetOptions(
 ## Printing LOG info
 my $dbnum = scalar(@fasta); my $hmm_num = scalar(@hmm);
 my $start = localtime(); my $tstart = time;
-open LOG, ">hmmsearch.log";
+open LOG, ">", "hmmsearch.log";
 print LOG "HMM search(es) started on: $start\n";
 print LOG "# of HMM motif to search: $hmm_num\n";
 print LOG "# of databases to search: $dbnum\n";
