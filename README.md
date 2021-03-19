@@ -26,7 +26,7 @@ We have implemented this approach in a simple to use pipeline. For this approach
 ## Installation
 To download MMH from the command line with Git, then add MMH to the $PATH variable (for the current session), type:
 ```Bash
-git clone --recursive https://github.com/PombertLab/MMH.git
+git clone https://github.com/PombertLab/MMH.git
 cd MMH/
 export PATH=$PATH:$(pwd)
 ```
