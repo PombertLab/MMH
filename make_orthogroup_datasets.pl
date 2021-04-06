@@ -1,8 +1,8 @@
 #!/usr/bin/perl
 ## Pombert Lab, 2018
 my $name = 'make_orthogroup_datasets.pl';
-my $version = '0.3a';
-my $updated = '12/03/2021';
+my $version = '0.3b';
+my $updated = '2021-04-06';
 
 use strict; use warnings; use Getopt::Long qw(GetOptions); use File::Basename;
 
@@ -13,7 +13,10 @@ UPDATED		${updated}
 SYNOPSIS	Create Fasta datasets from OrthoFinder Orthogroups output files.
 		This script will split single- and multi-copy orthologs in distinct subfolders
 
-USAGE		${name} -f FASTA/ -t *.tsv -o ./Datasets
+USAGE		${name} \\
+		  -f FASTA/ \\
+		  -t *.tsv \\
+		  -o ./Datasets
 
 OPTIONS:
 -f (--fasta)	Folder containing multifasta files
@@ -45,7 +48,7 @@ while (my $fasta = readdir DIR){
 			## Must keep track of file names in case fasta identifiers are 
 			## identical between datatest and prevent overwrite of data...
 		} 
-		else{$db{$fasta}{$seq}[1] .= $line;}
+		else{ $db{$fasta}{$seq}[1] .= $line; }
 	}
 }
 
@@ -72,11 +75,12 @@ while (my $csv = shift@csv){
 			print ORT "$line\n";
 			print PAR "$line\n";
 			@species = split("\t", $line);
-			for (1..$#species){print "Species # $_ = $species[$_]\n";}
+			for (1..$#species){ print "Species # $_ = $species[$_]\n"; }
 		}
 		else{
 			@OG = split(/\t/, $line); ## @OG -> list of orthologs, single or multicopy
-			my $og = $OG[0]; print "Working on $og...\n";
+			my $og = $OG[0];
+			print "Working on $og...\n";
 			if ($line =~ /,/){ ## Multicopy
 				$mc++; $mc = sprintf("%05d", $mc);
 				print PAR "MOG$mc\t$line\n";
@@ -96,7 +100,8 @@ while (my $csv = shift@csv){
 ## Subroutines
 sub seq{ ## Print sequence subroutine
 	for (1..$#species){
-		my $organism = $species[$_]; chomp $organism;
+		my $organism = $species[$_];
+		chomp $organism;
 		my $sp = $OG[$_];
 		my @splits = split(",", $sp);
 		while (my $para = shift@splits){

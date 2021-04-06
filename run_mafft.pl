@@ -1,8 +1,8 @@
 #!/usr/bin/perl
 ## Pombert Lab, 2018
 my $name = 'run_mafft.pl';
-my $version = '0.1a';
-my $updated = '03/03/2021';
+my $version = '0.1b';
+my $updated = '2021-04-06';
 
 use strict; use warnings; use Getopt::Long qw(GetOptions);
 
@@ -12,7 +12,10 @@ VERSION		${version}
 UPDATED		${updated}
 SYNOPSIS	Aligns multifasta files with MAFFT (https://mafft.cbrc.jp/alignment/software/)
 
-EXAMPLE		${name} -f *.fasta -t 10 -q
+EXAMPLE		${name} \\
+		  -f *.fasta \\
+		  -t 10 \\
+		  -q
 
 OPTIONS:
 -f (--fasta)		Multifasta files to be aligned
@@ -45,10 +48,12 @@ GetOptions(
 	'q|quiet' => \$quiet
 );
 
-my $aln = ''; if ($clustal){$aln = '--clustalout';}
-my $rr = ''; if ($reorder){$rr = '--reorder';}
-my $qt = ''; if ($quiet){$qt = '--quiet';}
+## Assigning MAFFT flags
+my $aln = ''; if ($clustal){ $aln = '--clustalout'; }
+my $rr = ''; if ($reorder){ $rr = '--reorder'; }
+my $qt = ''; if ($quiet){ $qt = '--quiet'; }
 
+## Runnning MAFFT
 while (my $fasta = shift@fasta) {
 	my $out = $fasta; $out =~ s/(.fasta|.fa|.fsa|.faa|.fna)$//;
 	print "Aligning $fasta...\n";
@@ -60,7 +65,8 @@ while (my $fasta = shift@fasta) {
 	  $rr \\
 	  $aln \\
 	  --thread $thread \\
-	  $fasta > $out.aln";
+	  $fasta \\
+	  > $out.aln";
 }
 
 exit;
