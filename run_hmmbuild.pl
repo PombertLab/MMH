@@ -2,7 +2,7 @@
 ## Pombert Lab, 2018
 my $name = 'run_hmmbuild.pl';
 my $version = '0.1';
-my $updated = '03/03/2021';
+my $updated = '2021-03-03';
 
 use strict; use warnings; use Getopt::Long qw(GetOptions);
 
