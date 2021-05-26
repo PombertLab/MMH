@@ -109,11 +109,9 @@ sub seq{ ## Print sequence subroutine
 		my $organism = $species[$_];
 		chomp $organism;
 		my $sp = $OG[$_];
+		
 		my @splits;
-		unless ($sp =~ /,/){ ## if 1 item
-			@splits = ($sp);
-		}
-		else{ ## if > 1 item
+		if ($sp){ ## Getting rid of empty columns, if any 
 			@splits = split(",", $sp);
 		}
 		while (my $para = shift@splits){
