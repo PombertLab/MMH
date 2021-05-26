@@ -1,8 +1,8 @@
 #!/usr/bin/perl
 ## Pombert Lab, 2018
 my $name = 'make_orthogroup_datasets.pl';
-my $version = '0.3b';
-my $updated = '2021-04-06';
+my $version = '0.4';
+my $updated = '2021-05-26';
 
 use strict; use warnings; use Getopt::Long qw(GetOptions); use File::Basename;
 
@@ -53,9 +53,15 @@ while (my $fasta = readdir DIR){
 }
 
 ## Creating output directories
-mkdir (${odir},0755) or die "Cannot create folder $odir: $!\n";
-mkdir ("${odir}/SINGLE_COPY_OG",0755) or die "Cannot create folder ${odir}/SINGLE_COPY_OG: $!\n";
-mkdir ("${odir}/MULTI_COPY_OG",0755) or die "Cannot create folder ${odir}/MULTI_COPY_OG: $!\n";
+unless (-d $odir){
+	mkdir (${odir},0755) or die "Cannot create $odir: $!\n";
+}
+unless (-d "${odir}/SINGLE_COPY_OG"){
+	mkdir ("${odir}/SINGLE_COPY_OG",0755) or die "Cannot create ${odir}/SINGLE_COPY_OG: $!\n";
+}
+unless (-d "${odir}/MULTI_COPY_OG"){
+	mkdir ("${odir}/MULTI_COPY_OG",0755) or die "Cannot create ${odir}/MULTI_COPY_OG: $!\n";
+}
 
 ## Creating multifasta files for each orthogroup
 my @OG; my @species;
@@ -103,7 +109,13 @@ sub seq{ ## Print sequence subroutine
 		my $organism = $species[$_];
 		chomp $organism;
 		my $sp = $OG[$_];
-		my @splits = split(",", $sp);
+		my @splits;
+		if ($sp =~ /,/){ ## if > 1 item
+			@splits = split(",", $sp);
+		}
+		else{ ## if 1 item
+			@splits = ($sp);
+		}
 		while (my $para = shift@splits){
 			chomp $para;
 			if ((exists $db{$organism}{$para}[0])&&($db{$organism}{$para}[1] ne '')){
