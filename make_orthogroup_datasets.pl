@@ -110,11 +110,11 @@ sub seq{ ## Print sequence subroutine
 		chomp $organism;
 		my $sp = $OG[$_];
 		my @splits;
-		if ($sp =~ /,/){ ## if > 1 item
-			@splits = split(",", $sp);
-		}
-		else{ ## if 1 item
+		unless ($sp =~ /,/){ ## if 1 item
 			@splits = ($sp);
+		}
+		else{ ## if > 1 item
+			@splits = split(",", $sp);
 		}
 		while (my $para = shift@splits){
 			chomp $para;
