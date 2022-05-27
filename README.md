@@ -1,6 +1,6 @@
 <p align="left"><img src="https://github.com/PombertLab/MMH/blob/master/logo.png" alt="MMH - A simple pipeline to create and search HMM models against reference protein databases." width="800"></p>
 
-<a href="https://zenodo.org/badge/latestdoi/345143326"><p align="right"><img src="https://zenodo.org/badge/345143326.svg" alt="DOI"></a>
+<a href="https://doi.org/10.5281/zenodo.5532798"><p align="right"><img src="https://zenodo.org/badge/345143326.svg" alt="DOI"></a>
 
 ## Table of contents
 * [Introduction](#Introduction)
