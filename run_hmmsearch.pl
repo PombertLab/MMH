@@ -1,10 +1,12 @@
 #!/usr/bin/perl
 ## Pombert Lab, 2019
 my $name = 'run_hmmsearch.pl';
-my $version = '0.2b';
-my $updated = '2021-04-06';
+my $version = '0.2c';
+my $updated = '2022-05-27';
 
-use strict; use warnings; use Getopt::Long qw(GetOptions);
+use strict;
+use warnings;
+use Getopt::Long qw(GetOptions);
 
 my $usage = <<"OPTIONS";
 NAME		${name}
@@ -66,43 +68,43 @@ while (my $fasta = shift@fasta){
 		## With alignments
 		unless ($noali){
 			if ($log){
-				system "hmmsearch \\
+				system ("hmmsearch \\
 				  --cpu $threads \\
 				  -E $evalue \\
 				  --tblout $hmm.$db.tbl \\
 				  $hmm \\
 				  $fasta \\
-				  >> hmm.$db.log";
+				  >> hmm.$db.log") == 0 or checksig();
 			}
 			else{
-				system "hmmsearch \\
+				system ("hmmsearch \\
 				  --cpu $threads \\
 				  -E $evalue \\
 				  --tblout $hmm.$db.tbl \\
 				  $hmm \\
-				  $fasta";
+				  $fasta") == 0 or checksig();
 			}
 		}
 
 		## Without alignments
 		else{
 			if ($log){
-				system "hmmsearch \\
+				system ("hmmsearch \\
 				  --cpu $threads \\
 				  -E $evalue \\
 				  --noali \\
 				  --tblout $hmm.$db.tbl \\
 				  $hmm $fasta \\
-				  >> hmm.$db.log";
+				  >> hmm.$db.log") == 0 or checksig();
 			}
 			else{
-				system "hmmsearch \\
+				system ("hmmsearch \\
 				  --cpu $threads \\
 				  -E $evalue \\
 				  --noali \\
 				  --tblout $hmm.$db.tbl \\
 				  $hmm \\
-				  $fasta";
+				  $fasta") == 0 or checksig();
 			}
 		}
 	}
@@ -111,3 +113,22 @@ my $end = localtime();
 my $time_taken = time - $tstart;
 print LOG "HMM search(es) ended on: $end\nTime elapsed: $time_taken seconds\n";
 print "Job done; see hmmsearch.log for details...\n";
+
+### Subroutine(s)
+sub checksig {
+
+	my $exit_code = $?;
+	my $modulo = $exit_code % 255;
+
+	print "\nExit code = $exit_code; modulo = $modulo \n";
+
+	if ($modulo == 2) {
+		print "\nSIGINT detected: Ctrl+C => exiting...\n";
+		exit(2);
+	}
+	elsif ($modulo == 131) {
+		print "\nSIGTERM detected: Ctrl+\\ => exiting...\n";
+		exit(131);
+	}
+
+}
