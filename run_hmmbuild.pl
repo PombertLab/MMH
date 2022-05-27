@@ -1,10 +1,12 @@
 #!/usr/bin/perl
 ## Pombert Lab, 2018
 my $name = 'run_hmmbuild.pl';
-my $version = '0.1';
-my $updated = '2021-03-03';
+my $version = '0.1a';
+my $updated = '2022-05-27';
 
-use strict; use warnings; use Getopt::Long qw(GetOptions);
+use strict;
+use warnings;
+use Getopt::Long qw(GetOptions);
 
 my $usage = <<"OPTIONS";
 NAME		${name}
@@ -26,5 +28,24 @@ GetOptions(
 );
 
 while (my $file = shift@alignments){
-	system "hmmbuild $file.hmm $file";
+	system ("hmmbuild $file.hmm $file") == 0 or checksig();
+}
+
+### Subroutine(s)
+sub checksig {
+
+	my $exit_code = $?;
+	my $modulo = $exit_code % 255;
+
+	print "\nExit code = $exit_code; modulo = $modulo \n";
+
+	if ($modulo == 2) {
+		print "\nSIGINT detected: Ctrl+C => exiting...\n";
+		exit(2);
+	}
+	elsif ($modulo == 131) {
+		print "\nSIGTERM detected: Ctrl+\\ => exiting...\n";
+		exit(131);
+	}
+
 }
