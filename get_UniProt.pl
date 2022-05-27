@@ -1,10 +1,12 @@
 #!/usr/bin/perl
 ## Pombert Lab, 2020
 my $name = 'get_UniProt.pl';
-my $version = '0.2d';
-my $updated = '2021-04-06';
+my $version = '0.2e';
+my $updated = '2022-05-27';
 
-use strict; use warnings; use Getopt::Long qw(GetOptions);
+use strict;
+use warnings;
+use Getopt::Long qw(GetOptions);
 
 my $usage = <<"OPTIONS";
 
@@ -53,6 +55,8 @@ unless (-d $folder){
 print "\nOutput files will be located in directory $folder\n";
 if ($log){ open LOG, ">", "${folder}/${log}"; }
 
+my $url = "ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete";
+
 ## Downloading SwissProt
 if ($swiss){
 	
@@ -62,12 +66,12 @@ if ($swiss){
 		print LOG "Downloading SwissProt on $date";
 	}
 
-	system "nice \\
+	system ("nice \\
 	  -n $nice \\
 	  wget \\
 	  -c \\
 	  -P $folder \\
-	  ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_sprot.fasta.gz";
+	  $url/uniprot_sprot.fasta.gz") == 0 or checksig();
 
 	if ($log){
 		my $size = `du -h $folder/uniprot_sprot.fasta.gz`;
@@ -83,12 +87,12 @@ if ($trembl){
 		print LOG "Downloading trEMBL on $date";
 	}
 
-	system "nice \\
+	system ("nice \\
 	  -n $nice \\
 	  wget \\
 	  -c \\
 	  -P $folder \\
-	  ftp://ftp.uniprot.org/pub/databases/uniprot/current_release/knowledgebase/complete/uniprot_trembl.fasta.gz";
+	  $url/uniprot_trembl.fasta.gz") == 0 or checksig();
 
 	if ($log){
 		my $size = `du -h $folder/uniprot_trembl.fasta.gz`;
@@ -111,4 +115,23 @@ if ($decomp){
 if ($log){
 	my $end = `date`;
 	print LOG "Finished downloading database(s) on $end";
+}
+
+### Subroutine(s)
+sub checksig {
+
+	my $exit_code = $?;
+	my $modulo = $exit_code % 255;
+
+	print "\nExit code = $exit_code; modulo = $modulo \n";
+
+	if ($modulo == 2) {
+		print "\nSIGINT detected: Ctrl+C => exiting...\n";
+		exit(2);
+	}
+	elsif ($modulo == 131) {
+		print "\nSIGTERM detected: Ctrl+\\ => exiting...\n";
+		exit(131);
+	}
+
 }
