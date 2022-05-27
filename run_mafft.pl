@@ -1,10 +1,12 @@
 #!/usr/bin/perl
 ## Pombert Lab, 2018
 my $name = 'run_mafft.pl';
-my $version = '0.1b';
-my $updated = '2021-04-06';
+my $version = '0.1c';
+my $updated = '2022-05-27';
 
-use strict; use warnings; use Getopt::Long qw(GetOptions);
+use strict;
+use warnings;
+use Getopt::Long qw(GetOptions);
 
 my $usage = <<"OPTIONS";
 NAME		${name}
@@ -57,7 +59,7 @@ my $qt = ''; if ($quiet){ $qt = '--quiet'; }
 while (my $fasta = shift@fasta) {
 	my $out = $fasta; $out =~ s/(.fasta|.fa|.fsa|.faa|.fna)$//;
 	print "Aligning $fasta...\n";
-	system "mafft \\
+	system ("mafft \\
 	  --op $op \\
 	  --ep $ep \\
 	  --maxiterate $max \\
@@ -66,7 +68,26 @@ while (my $fasta = shift@fasta) {
 	  $aln \\
 	  --thread $thread \\
 	  $fasta \\
-	  > $out.aln";
+	  > $out.aln") == 0 or checksig();
 }
 
 exit;
+
+### Subroutine(s)
+sub checksig {
+
+	my $exit_code = $?;
+	my $modulo = $exit_code % 255;
+
+	print "\nExit code = $exit_code; modulo = $modulo \n";
+
+	if ($modulo == 2) {
+		print "\nSIGINT detected: Ctrl+C => exiting...\n";
+		exit(2);
+	}
+	elsif ($modulo == 131) {
+		print "\nSIGTERM detected: Ctrl+\\ => exiting...\n";
+		exit(131);
+	}
+
+}
