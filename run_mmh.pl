@@ -2,7 +2,7 @@
 # Pombert lab, 2024
 
 my $name = 'run_mmh.pl';
-my $version = '0.1';
+my $version = '0.1a';
 my $updated = '2024-06-03';
 
 use strict;
@@ -67,19 +67,6 @@ GetOptions(
     'v|version' => \$sc_version
 );
 
-## Logs
-my $log_file = $outdir.'/'.'mmh.log';
-open LOG, '>', $log_file or die "Can't create $log_file: $!\n";
-
-my $time = localtime();
-my $start_time = time();
-my $tstart = time();
-
-print LOG "MMH started on: ".$time."\n\n";
-logs(\*LOG, 'Command line', 'header');
-print LOG "$0 @commands\n\n";
-logs(\*LOG, 'Runtime', 'header');
-
 ###################################################################################################
 ## Version
 ###################################################################################################
@@ -91,6 +78,32 @@ if ($sc_version){
     print "Updated:    $updated\n\n";
     exit(0);
 }
+
+###################################################################################################
+## Output directory creation and setup
+###################################################################################################
+
+unless (-d $outdir){
+    make_path($outdir,{mode=>0755}) or die "Can't create $outdir: $!\n";
+}
+
+
+###################################################################################################
+## Log
+###################################################################################################
+
+my $log_file = $outdir.'/'.'mmh.log';
+open LOG, '>', $log_file or die "Can't create $log_file: $!\n";
+
+my $time = localtime();
+my $start_time = time();
+my $tstart = time();
+
+print LOG "MMH started on: ".$time."\n\n";
+logs(\*LOG, 'Command line', 'header');
+
+print LOG "$0 @commands\n\n";
+logs(\*LOG, 'Runtime', 'header');
 
 ###################################################################################################
 ## Grabbing $path location from script
@@ -142,14 +155,6 @@ if ($hmmer_check eq ''){
     print STDERR "[E]: Cannot find hmmbuild. Please install HMMER in your \$PATH.\n";
     print STDERR "[E]: Exiting..\n\n";
     exit(1);
-}
-
-###################################################################################################
-## Output directory creation and setup
-###################################################################################################
-
-unless (-d $outdir){
-    make_path($outdir,{mode=>0755}) or die "Can't create $outdir: $!\n";
 }
 
 ###################################################################################################
