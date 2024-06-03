@@ -53,7 +53,7 @@ get_UniProt.pl \
   -f $UNIPROT
 ```
 
-Note that the trEMBL database is quite large. We recommend using the [aria2](https://aria2.github.io/) lightweight utility to download large files. If missing, get_UniProt.pl will use `wget` instead (or `curl` if the latter is missing as well).
+Note that the trEMBL database is quite large (> 55 Gb as of June 2024). We recommend using the [aria2](https://aria2.github.io/) lightweight utility to download large files. If missing, get_UniProt.pl will use `wget` instead (or `curl` if the latter is missing as well).
 
 Options for [get_UniProt.pl](https://github.com/PombertLab/MMH/blob/master/Core/get_UniProt.pl) are:
 ```
