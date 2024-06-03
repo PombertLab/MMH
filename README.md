@@ -41,25 +41,21 @@ Hidden markov searches will be performed against a local copy of the UniProt Swi
 The Swiss-Prot database can be downloaded with `get_UniProt` as follows:
 
 ```Bash
-UNI=~/UniProt                    ## Replace by desired download location
+UNIPROT=~/UniProt                ## Replace by desired download location
 
+## Downloading the Swiss-Prot database
 get_UniProt.pl \
   -s \
-  -f $UNI
-```
+  -f $UNIPROT
 
-Note that the trEMBL database is quite large. We recommend using the [aria2](https://aria2.github.io/) lightweight utility to download large files. If missing, get_UniProt.pl will use `wget` instead (or `curl` if the latter is missing as well).
-
-To download both the Swiss-Prot and trEMBL databases:
-```Bash
-UNI=~/UniProt                    ## Replace by desired download location
-
+## Downloading both the Swiss-Prot and trEMBL databases
 get_UniProt.pl \
   -s \
   -t \
-  -f $UNI
+  -f $UNIPROT
 ```
 
+Note that the trEMBL database is quite large. We recommend using the [aria2](https://aria2.github.io/) lightweight utility to download large files. If missing, get_UniProt.pl will use `wget` instead (or `curl` if the latter is missing as well).
 
 Options for [get_UniProt.pl](https://github.com/PombertLab/MMH/blob/master/Core/get_UniProt.pl) are:
 ```
