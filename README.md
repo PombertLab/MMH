@@ -36,9 +36,7 @@ export PATH=$PATH:$(pwd)/Core
 ```
 
 #### Downloading the UniProt databases
-Hidden markov searches will be performed against a local copy of the UniProt Swiss-Prot and/or trEMBL databases.
-
-The Swiss-Prot database can be downloaded with `get_UniProt.pl` as follows:
+Hidden markov searches will be performed against a local copy of the UniProt Swiss-Prot and/or trEMBL databases. The UniProt databases can be downloaded with `get_UniProt.pl` as follows:
 
 ```Bash
 UNIPROT=~/UniProt                ## Replace by desired download location
