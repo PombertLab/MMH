@@ -101,11 +101,22 @@ while (my $file = shift@tbl){
 
                     my $product = $1;
                     my $OS = $2;
+
                     my ($species,$genus) = $OS =~ /^((\S+)\s+\S+)/;
+
+                    # In case species info is missing
+                    if (!defined $species){
+                        $species = 'n/a';
+                    }
+                    if (!defined $genus){
+                        $genus = 'n/a';
+                    }
+
                     if ($hflag == 0){
                         print OUT "Query\tTarget\tE-value\tProduct\tGenus\tSpecies\tOS descriptor\n";
                         $hflag = 1;
                     }
+
                     print OUT "$query\t$target\t$fevalue\t$product\t$genus\t$species\t$OS\n";
 
                 }
