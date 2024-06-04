@@ -56,6 +56,7 @@ get_UniProt.pl \
 Note that the trEMBL database is quite large (> 55 Gb as of June 2024). We recommend using the [aria2](https://aria2.github.io/) lightweight utility to download large files. If missing, get_UniProt.pl will use `wget` instead (or `curl` if the latter is missing as well).
 
 Options for [get_UniProt.pl](https://github.com/PombertLab/MMH/blob/master/Core/get_UniProt.pl) are:
+
 ```
 -s  (--swiss)         Download Swiss-Prot
 -t  (--trembl)        Download trEMBL
@@ -76,7 +77,7 @@ The MMH pipeline consists of a few simple steps:
 4. It searches these HMM models against a local copy of the [UniProt](https://www.uniprot.org/) databases.
 5. It reports matches as simple tab-delimited output files.
 
-The MMH pipeline can be run via its `run_mmh.pl` master script. To run MMH, provide run_mmh.pl with the directory containing the FASTA files to query and the desired output directory:
+The MMH pipeline can be run via its `run_mmh.pl` master script. To run MMH, provide run_mmh.pl with the directory containing the FASTA files to query and the desired output directory as described below.
 
 ```Bash
 FASTA=~/FASTA              ## Replace by FASTA file directory 
@@ -90,6 +91,8 @@ run_mmh.pl \
   -dbloc $DBLOC \
   -db swiss
 ```
+
+Note that due to its sheer size, running searches against the trEMBL databases will be slow. We recommend queries against the curated (but much smaller) Swiss-Prot database.
 
 Options for run_mmh.pl are:
 ```
