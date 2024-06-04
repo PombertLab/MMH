@@ -6,8 +6,8 @@
 * [Introduction](#Introduction)
 * [Dependencies](#Dependencies)
 * [Installation](#Installation)
-* [Example](#Example)
-* [Scripts](#Scripts)
+* [Running MMH](#Running-MMH)
+* [About runtime](#About-runtime)
 * [Funding and acknowledgments](#Funding-and-acknowledgments)
 * [References](#References)
 
@@ -92,8 +92,6 @@ run_mmh.pl \
   -db swiss
 ```
 
-Note that due to its sheer size, running searches against the trEMBL databases will be slow. We recommend queries against the curated (but much smaller) Swiss-Prot database.
-
 Options for run_mmh.pl are:
 ```
 -f (--fasta)        Directory containing fasta files to create HMM models from
@@ -145,6 +143,10 @@ SOG00004	sp|Q91V37|VATO_MOUSE	8.6e-15	V-type proton ATPase 21 kDa proteolipid su
 SOG00004	sp|Q2TA24|VATO_BOVIN	1.8e-14	V-type proton ATPase 21 kDa proteolipid subunit c''	Bos	Bos taurus	Bos taurus 
 SOG00005	sp|P26659|RAD15_SCHPO	7.2e-233	General transcription and DNA repair factor IIH helicase subunit XPD	Schizosaccharomyces	Schizosaccharomyces pombe	Schizosaccharomyces pombe (strain 972 / ATCC 24843) 
 ```
+
+## About runtime
+Note that due to its sheer size, running searches against the trEMBL databases will be slow. We recommend queries against the curated (but much smaller) Swiss-Prot database. For example, using the HMM models generated from the FASTA files in the `Example/FASTA/` directory as queries, searches ran for 24 and 6573 seconds agaisnt the `swiss` and `trembl` databases, respectively (on an Intel i5-12500H mobile CPU).
+
 
 ## Funding and acknowledgments
 This work was supported by the National Institute of Allergy and Infectious Diseases of the National Institutes of Health (award number R15AI128627) to Jean-Francois Pombert. The content is solely the responsibility of the authors and does not necessarily represent the official views of the National Institutes of Health.
